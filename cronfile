@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/root/miniconda3/bin:/root/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+#Execute a python file copied into container via the scripts directory in the source.  Output to docker logs.
+* * * * * cd /srv/scripts && python hello_world.py > /proc/1/fd/1 2>/proc/1/fd/2
+# An empty line is required at the end of this file for a valid cron file.
