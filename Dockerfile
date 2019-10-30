@@ -3,14 +3,14 @@
 FROM ubuntu:16.04
 
 # Run apt-get update and then install cron and the nano editor
-RUN apt-get update && apt-get install cron -y
+RUN apt-get update && apt-get install cron wget -y
 
 # Make directories to hold the Anaconda installer and the scripts from GIT
 RUN mkdir /tmp/anaconda && mkdir /srv/scripts
 
 # Change to the staging folder for the anaconda install and download the latest miniconda to it
 WORKDIR /tmp/anaconda
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh miniconda.sh \
+RUN wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& chmod +x /tmp/anaconda/miniconda.sh \
 	&& /tmp/anaconda/miniconda.sh -b -p \
 	&& /root/miniconda3/condabin/conda init bash
