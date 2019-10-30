@@ -15,8 +15,9 @@ RUN wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-L
 	&& /tmp/anaconda/miniconda.sh -b -p \
 	&& /root/miniconda3/condabin/conda init bash
 
-# Change to the location where the scripts will live and copy in the scripts
+# Change to the location where the scripts will live.  Remove the Anaconda installer, and then copy in the scripts.
 WORKDIR /srv/scripts
+RUN rm -rf /tmp/anaconda
 COPY ./scripts/* /srv/scripts/
 
 # Copy the cronfile to the cron.d directory
