@@ -3,7 +3,7 @@
 FROM ubuntu:16.04
 
 # Run apt-get update and then install cron and the nano editor
-RUN apt-get update && apt-get install cron wget -y
+RUN apt-get update && apt-get install cron nano wget -y
 
 # Make directories to hold the Anaconda installer and the scripts from GIT
 RUN mkdir /tmp/anaconda && mkdir /srv/scripts
