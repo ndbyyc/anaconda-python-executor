@@ -10,7 +10,7 @@ RUN mkdir /tmp/anaconda && mkdir /srv/scripts
 
 # Change to the staging folder for the anaconda install and download the latest miniconda to it
 WORKDIR /tmp/anaconda
-RUN wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+RUN wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda2-4.7.12.1-Linux-x86_64.sh \
 	&& chmod +x /tmp/anaconda/miniconda.sh \
 	&& /tmp/anaconda/miniconda.sh -b -p \
 	&& /root/miniconda3/condabin/conda init bash
