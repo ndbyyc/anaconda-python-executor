@@ -3,8 +3,11 @@
 FROM ubuntu:16.04
 
 # Run apt-get update and then install cron and the nano editor
-RUN apt-get update && apt-get install cron nano wget -y
-
+RUN apt-get update && apt-get install cron nano wget curl apt-transport-https -y \
+        && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+	&& curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list \
+	&& apt-get update \
+	&& ACCEPT_EULA=Y apt-get install mssql-tools unixodbc-dev -y
 # Make directories to hold the Anaconda installer and the scripts from GIT
 RUN mkdir /tmp/anaconda && mkdir /srv/scripts
 
@@ -13,7 +16,8 @@ WORKDIR /tmp/anaconda
 RUN wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda2-4.7.12.1-Linux-x86_64.sh \
 	&& chmod +x /tmp/anaconda/miniconda.sh \
 	&& /tmp/anaconda/miniconda.sh -b -p \
-	&& /root/miniconda3/condabin/conda init bash
+	&& /root/miniconda3/condabin/conda init bash \
+	&& /root/miniconda3/condabin/conda install -y -c anaconda sqlalchemy pyodbc
 
 # Change to the location where the scripts will live.  Remove the Anaconda installer, and then copy in the scripts.
 WORKDIR /srv/scripts
