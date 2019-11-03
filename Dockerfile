@@ -3,7 +3,7 @@
 FROM ubuntu:16.04
 
 # Run apt-get update and then install cron and the nano editor
-RUN apt-get update && apt-get install cron nano wget curl apt-transport-https -y \
+RUN apt-get update && apt-get install cron nano wget curl apt-transport-https tzdata -y \
         && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
 	&& curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list \
 	&& apt-get update \
