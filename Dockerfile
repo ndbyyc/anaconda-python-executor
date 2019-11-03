@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install cron nano wget curl apt-transport-https tz
 	&& curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list \
 	&& apt-get update \
 	&& ACCEPT_EULA=Y apt-get install mssql-tools unixodbc-dev -y
+
 # Make directories to hold the Anaconda installer and the scripts from GIT
 RUN mkdir /tmp/anaconda && mkdir /srv/scripts
 
