@@ -37,7 +37,7 @@ RUN crontab /etc/cron.d/cronfile
 # Create the log file to be able to run tail successfully 
 RUN touch /var/log/cron.log
 
-# Configure entrypoint script to populate environment variables so cron can use them
+# Configure entrypoint script to populate environment variables for cron's use
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
