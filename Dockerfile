@@ -44,5 +44,3 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 # Run the cron command on container startup
 CMD ["cron", "-f"]
-
-# comment
