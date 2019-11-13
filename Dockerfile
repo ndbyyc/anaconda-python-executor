@@ -18,7 +18,7 @@ RUN wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1
 	&& chmod +x /tmp/anaconda/miniconda.sh \
 	&& /tmp/anaconda/miniconda.sh -b -p \
 	&& /root/miniconda3/condabin/conda init bash \
-	&& /root/miniconda3/condabin/conda install -y -c anaconda sqlalchemy pyodbc dropbox
+	&& /root/miniconda3/condabin/conda install -y -c anaconda sqlalchemy pyodbc dropbox xlrd
 
 # Change to the location where the scripts will live.  Remove the Anaconda installer, and then copy in the scripts.
 WORKDIR /srv/scripts
